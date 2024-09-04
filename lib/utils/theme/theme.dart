@@ -8,38 +8,44 @@ import 'package:t_store/utils/theme/custom_themes/outlined_button_theme.dart';
 import 'package:t_store/utils/theme/custom_themes/text_field_theme.dart';
 import 'package:t_store/utils/theme/custom_themes/text_theme.dart';
 
+import '../constants/colors.dart';
+
 class TAppTheme {
   TAppTheme._(); // makes the constructor private
 
   // because the constructor is private, we will be calling functions like this : TAppTheme.function
 
   static ThemeData lightTheme = ThemeData(
-      useMaterial3: true,
-      fontFamily: 'Poppins',
-      brightness: Brightness.light,
-      primaryColor: Colors.blue,
-      scaffoldBackgroundColor: Colors.white,
-      textTheme: TTextTheme.lightTextTheme,
-      elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
-      outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
-      chipTheme: TChipTheme.lightChipTheme,
-      appBarTheme: TAppBarTheme.lightAppBarTheme,
-      checkboxTheme: TCheckboxTheme.lightCheckboxTheme,
-      bottomSheetTheme: TBottomSheetTheme.lightBottomSheetTheme,
-      inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme);
+    useMaterial3: true,
+    fontFamily: 'Poppins',
+    disabledColor: TColors.grey,
+    brightness: Brightness.light,
+    primaryColor: TColors.primary,
+    textTheme: TTextTheme.lightTextTheme,
+    chipTheme: TChipTheme.lightChipTheme,
+    scaffoldBackgroundColor: TColors.white,
+    appBarTheme: TAppBarTheme.lightAppBarTheme,
+    checkboxTheme: TCheckboxTheme.lightCheckboxTheme,
+    bottomSheetTheme: TBottomSheetTheme.lightBottomSheetTheme,
+    elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
+    outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
+    inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
+  );
 
   static ThemeData darkTheme = ThemeData(
-      useMaterial3: true,
-      fontFamily: 'Poppins',
-      brightness: Brightness.dark,
-      primaryColor: Colors.blue,
-      scaffoldBackgroundColor: Colors.black,
-      textTheme: TTextTheme.darkTextTheme,
-      elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
-      outlinedButtonTheme: TOutlinedButtonTheme.darkOutlinedButtonTheme,
-      chipTheme: TChipTheme.darkChipTheme,
-      appBarTheme: TAppBarTheme.darkAppBarTheme,
-      checkboxTheme: TCheckboxTheme.darkCheckboxTheme,
-      bottomSheetTheme: TBottomSheetTheme.darkBottomSheetTheme,
-      inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme);
+    useMaterial3: true,
+    fontFamily: 'Poppins',
+    disabledColor: TColors.grey,
+    brightness: Brightness.dark,
+    primaryColor: TColors.primary,
+    textTheme: TTextTheme.darkTextTheme,
+    chipTheme: TChipTheme.darkChipTheme,
+    scaffoldBackgroundColor: TColors.black,
+    appBarTheme: TAppBarTheme.darkAppBarTheme,
+    checkboxTheme: TCheckboxTheme.darkCheckboxTheme,
+    bottomSheetTheme: TBottomSheetTheme.darkBottomSheetTheme,
+    elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
+    outlinedButtonTheme: TOutlinedButtonTheme.darkOutlinedButtonTheme,
+    inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme,
+  );
 }
