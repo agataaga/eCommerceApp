@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_common/get_reset.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/authentication/screens/login/widgets/login_form.dart';
+import 'package:t_store/features/authentication/screens/login/widgets/login_header.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
 
 import '../../../../common/styles/spacing_styles.dart';
+import '../../../../common/widgets/login_signup/form_divider.dart';
+import '../../../../common/widgets/login_signup/social_buttons.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 
@@ -21,119 +25,47 @@ class Login extends StatelessWidget {
         body: SingleChildScrollView(
       child: Padding(
         padding: TSpacingStyle.paddingWithAppBarHeight,
-        child: Column(
-          children: [
-            // this is the heading
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              //aligns all the elements to the left
-              children: [
-                Image(
-                  height: 150,
-                  image: AssetImage(
-                      dark ? TImages.lightAppLogo : TImages.darkAppLogo),
-                ),
-                Text(
-                  TTexts.loginTitle,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                const SizedBox(height: TSizes.sm),
-                Text(
-                  TTexts.loginSubTitle,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
-            ),
-
-            /// This is the form that allows users to log in
-            Form(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
-                  child: Column(
-                                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.direct_right),
-                        labelText: TTexts.email),
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.password_check),
-                        labelText: TTexts.password,
-                        suffixIcon: Icon(Iconsax.eye_slash)),
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwInputFields /2),
-
-                  /// Remember me and Forgot password button
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ///Remember me
-                      Row(
-                        children: [
-                          Checkbox(value: false, onChanged: (value) {}),
-                          const Text(TTexts.rememberMe),
-                        ],
-                      ),
-                      //Forgot
-                      TextButton(onPressed: (){}, child: Text(TTexts.forgetPassword))
-                    ],
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwInputFields),
-
-                  /// Sign in button
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text(TTexts.signIn))),
-
-                  const SizedBox(height: TSizes.spaceBtwItems),
-
-                  /// Create an account
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text(TTexts.createAccount))),
-                                ],
-                              ),
-                ),
-            ),
-
-            ///Divider
-            //the two lines with text inbetween
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(child: Divider(color: dark ? TColors.darkGrey : TColors.grey, thickness: 0.5, indent: 60, endIndent: 5,)),
-                Text(TTexts.orSignInWith.capitalize!, style: Theme.of(context).textTheme.labelMedium),
-                Flexible(child: Divider(color: dark ? TColors.darkGrey : TColors.grey, thickness: 0.5, indent: 5, endIndent: 60,))
-              ],
-            ),
-
-            const SizedBox(height: TSizes.spaceBtwSections),
-            
-            /// Footer
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(border: Border.all(color: TColors.grey), borderRadius: BorderRadius.circular(100)),
-                  child: const Image(
-                    width: TSizes.iconMd,
-                    height: TSizes.iconMd,
-                    image: AssetImage(TImages.google)
-                  ),
-                ),
-                const SizedBox(width: TSizes.spaceBtwItems),
-                Container(
-                  decoration: BoxDecoration(border: Border.all(color: TColors.grey), borderRadius: BorderRadius.circular(100)),
-                  child: const Image(
-                      width: TSizes.iconMd,
-                      height: TSizes.iconMd,
-                      image: AssetImage(TImages.facebook)
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
+        child: LoginScreen(dark: dark),
       ),
     ));
   }
 }
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({
+    super.key,
+    required this.dark,
+  });
+
+  final bool dark;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // this is the heading
+        TLoginHeader(dark: dark),
+
+        /// This is the form that allows users to log in
+        const TLoginForm(),
+
+        ///Divider
+        //the two lines with text in between
+        const TFormDivider(dividerText: TTexts.orSignInWith),
+        const SizedBox(height: TSizes.spaceBtwSections),
+
+        /// Footer - Social Buttons
+        const TSocialButtons()
+      ],
+    );
+  }
+}
+
+
+
+
+
+
+
+
 
