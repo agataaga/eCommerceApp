@@ -16,37 +16,39 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(OnBoardingController()); //we create an instance of OnBoardingController
 
-    return Stack(
-      children: [
-        // Horizontal Scrollable Page
-        PageView(
-          controller: controller.pageController,
-          onPageChanged: controller.updatePageIndicator,
-          children: const [
-            OnBoardingPage(
-                image: TImages.onBoardingImage1,
-                title: TTexts.onBoardingTitle1,
-                subtitle: TTexts.onBoardingSubTitle1),
-            OnBoardingPage(
-                image: TImages.onBoardingImage2,
-                title: TTexts.onBoardingTitle2,
-                subtitle: TTexts.onBoardingSubTitle2),
-            OnBoardingPage(
-                image: TImages.onBoardingImage3,
-                title: TTexts.onBoardingTitle3,
-                subtitle: TTexts.onBoardingSubTitle3)
-          ],
-        ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Horizontal Scrollable Page
+          PageView(
+            controller: controller.pageController,
+            onPageChanged: controller.updatePageIndicator,
+            children: const [
+              OnBoardingPage(
+                  image: TImages.onBoardingImage1,
+                  title: TTexts.onBoardingTitle1,
+                  subtitle: TTexts.onBoardingSubTitle1),
+              OnBoardingPage(
+                  image: TImages.onBoardingImage2,
+                  title: TTexts.onBoardingTitle2,
+                  subtitle: TTexts.onBoardingSubTitle2),
+              OnBoardingPage(
+                  image: TImages.onBoardingImage3,
+                  title: TTexts.onBoardingTitle3,
+                  subtitle: TTexts.onBoardingSubTitle3)
+            ],
+          ),
 
-        // Skip button
-        const OnBoardingSkipButton(),
+          // Skip button
+          const OnBoardingSkipButton(),
 
-        // Smooth Page Indicator
-        const OnBoardingDotNavigation(),
+          // Smooth Page Indicator
+          const OnBoardingDotNavigation(),
 
-        // Circular Button
-        const OnBoardingNextButton()
-      ],
+          // Circular Button
+          const OnBoardingNextButton()
+        ],
+      ),
     );
   }
 }
