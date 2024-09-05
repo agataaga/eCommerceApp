@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-
+import 'package:get/get.dart';
+ import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/authentication/screens/signup/signup.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
@@ -21,6 +22,7 @@ class TLoginForm extends StatelessWidget {
                   prefixIcon: Icon(Iconsax.direct_right),
                   labelText: TTexts.email),
             ),
+
             const SizedBox(height: TSizes.spaceBtwInputFields),
             TextFormField(
               decoration: const InputDecoration(
@@ -28,6 +30,7 @@ class TLoginForm extends StatelessWidget {
                   labelText: TTexts.password,
                   suffixIcon: Icon(Iconsax.eye_slash)),
             ),
+
             const SizedBox(height: TSizes.spaceBtwInputFields /2),
 
             /// Remember me and Forgot password button
@@ -42,7 +45,7 @@ class TLoginForm extends StatelessWidget {
                   ],
                 ),
                 //Forgot
-                TextButton(onPressed: (){}, child: Text(TTexts.forgetPassword))
+                TextButton(onPressed: (){}, child: const Text(TTexts.forgetPassword))
               ],
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -53,7 +56,7 @@ class TLoginForm extends StatelessWidget {
             const SizedBox(height: TSizes.spaceBtwItems),
 
             /// Create an account
-            SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text(TTexts.createAccount))),
+            SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => Get.to(() => const SignupScreen()), child: const Text(TTexts.createAccount))),
           ],
         ),
       ),
