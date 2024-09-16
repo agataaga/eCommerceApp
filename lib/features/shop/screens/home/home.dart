@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
-import '../../../../common/image_text_carosel/vertical_img_text.dart';
+import 'package:t_store/features/shop/screens/home/widgets/home_categories.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -21,35 +20,25 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ///AppBar
-                  const THomeAppBar(),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
                   /// Searchbar
-                  const TSearchContainer(text: 'Search in store'),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  TSearchContainer(text: 'Search in store'),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
-                  ///categories
                   Padding(
-                    padding: const EdgeInsets.only(left: TSizes.defaultSpace, right: TSizes.spaceBtwItems),
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace, right: TSizes.spaceBtwItems),
                     child: Column(
                       children: [
-                        const TSectionHeading(
+                        /// Header
+                        TSectionHeading(
                             title: 'Popular Categories',
                             showActionButton: false, textColor: TColors.white),
-                        const SizedBox(height: TSizes.spaceBtwItems),
+                        SizedBox(height: TSizes.spaceBtwItems),
 
                         /// Categories
-                        SizedBox(
-                          height: 80,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 8,
-                            itemBuilder: (_, index) {
-                              return TVerticalImageWithText(image: TImages.shoeIcon, title: 'Shoes', onTap: (){});
-                            },
-                            scrollDirection: Axis.horizontal,
-                          ),
-                        )
+                        THomeCategories()
                       ],
                     ),
                   )
@@ -62,5 +51,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
 
